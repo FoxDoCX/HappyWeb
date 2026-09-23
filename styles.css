@@ -745,6 +745,21 @@ button {
   transform: translateY(-1px) scale(1);
 }
 
+.gifts__qr {
+  margin: 0.35rem 0 0;
+  padding: 0.85rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 36px rgba(26, 36, 32, 0.08);
+}
+
+.gifts__qr img {
+  display: block;
+  width: min(100%, 14rem);
+  height: auto;
+  margin: 0 auto;
+}
+
 .gifts__trust {
   margin: 0;
   max-width: 28rem;
