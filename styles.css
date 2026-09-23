@@ -754,6 +754,25 @@ button {
   line-height: 1.5;
 }
 
+.gifts__phone {
+  margin: 0;
+  max-width: 30rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.gifts__phone a {
+  color: var(--gold-deep);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(138, 109, 53, 0.4);
+}
+
+.gifts__phone a:hover {
+  border-color: rgba(138, 109, 53, 0.8);
+}
+
 .gifts__aside {
   margin: 0 auto;
   max-width: 34rem;
