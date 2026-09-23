@@ -2,11 +2,10 @@
   const EVENT_DATE = new Date("2026-10-04T17:00:00+03:00");
 
   const LINKS = {
-    gift: "", // ссылка на сбор / QR
-    rsvp: "", // внешняя форма регистрации
+    rsvp: "", // внешняя форма регистрации (если нужна)
   };
 
-  const EMAIL = ""; // email для RSVP через mailto
+  const EMAIL = "iriska.g10@yandex.ru";
 
   /* Reveal on scroll */
   const reveals = document.querySelectorAll(".reveal");
@@ -63,40 +62,7 @@
     setInterval(tick, 30000);
   }
 
-  /* Gifts */
-  const giftLink = document.getElementById("gift-link");
-  const amounts = document.querySelectorAll(".amount");
-  let selectedAmount = "5000";
-
-  amounts.forEach((el) => {
-    if (el.dataset.amount === selectedAmount) el.classList.add("is-active");
-
-    el.addEventListener("click", () => {
-      selectedAmount = el.dataset.amount || selectedAmount;
-      amounts.forEach((a) => a.classList.toggle("is-active", a === el));
-    });
-  });
-
-  if (giftLink) {
-    if (LINKS.gift) {
-      giftLink.href = LINKS.gift;
-    }
-
-    giftLink.addEventListener("click", (e) => {
-      if (!LINKS.gift) {
-        e.preventDefault();
-        alert("Добавьте ссылку на сбор в script.js → LINKS.gift");
-        return;
-      }
-      try {
-        const url = new URL(LINKS.gift, window.location.href);
-        url.searchParams.set("amount", selectedAmount);
-        giftLink.href = url.toString();
-      } catch {
-        /* keep base href */
-      }
-    });
-  }
+  /* Gifts — ссылка задана в HTML */
 
   /* RSVP */
   const rsvpExternal = document.getElementById("rsvp-external");
@@ -118,7 +84,7 @@
   }
 
   if (rsvpForm) {
-    rsvpForm.addEventListener("submit", (e) => {
+    rsvpForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const data = new FormData(rsvpForm);
@@ -132,35 +98,56 @@
       }
 
       const labels = {
-        yes: "обязательно приду",
-        maybe: "пока не уверена",
-        no: "к сожалению, не смогу",
+        yes: "Обязательно приду",
+        maybe: "Пока не уверена",
+        no: "К сожалению, не смогу",
       };
 
-      const subject = encodeURIComponent(`RSVP: день рождения Ирины — ${name}`);
-      const body = encodeURIComponent(
-        [
-          `Имя: ${name}`,
-          `Ответ: ${labels[answer] || answer}`,
-          note ? `Комментарий: ${note}` : "",
-        ]
-          .filter(Boolean)
-          .join("\n")
-      );
-
-      if (EMAIL) {
-        window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-        showStatus("Открываю почту для отправки ответа…", "success");
-        return;
+      const submitBtn = rsvpForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Отправляю…";
       }
+      showStatus("Отправляю ответ…");
 
-      const stored = JSON.parse(localStorage.getItem("meyn-rsvp") || "[]");
-      stored.push({ name, answer, note, at: new Date().toISOString() });
-      localStorage.setItem("meyn-rsvp", JSON.stringify(stored));
-      rsvpForm.reset();
-      const yes = rsvpForm.querySelector('input[value="yes"]');
-      if (yes) yes.checked = true;
-      showStatus("Спасибо! Ваш ответ сохранён. До встречи в MEYN.", "success");
+      const payload = {
+        _subject: `RSVP: день рождения Ирины — ${name}`,
+        _template: "table",
+        _captcha: "false",
+        Имя: name,
+        Ответ: labels[answer] || answer,
+        Комментарий: note || "—",
+        Страница: window.location.href,
+        Время: new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" }),
+      };
+
+      try {
+        const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        rsvpForm.reset();
+        const yes = rsvpForm.querySelector('input[value="yes"]');
+        if (yes) yes.checked = true;
+        showStatus("Спасибо! Ответ отправлен. До встречи в MEYN.", "success");
+      } catch {
+        showStatus(
+          "Не удалось отправить. Проверьте интернет или напишите напрямую: " + EMAIL,
+          "error"
+        );
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Отправить ответ";
+        }
+      }
     });
   }
 })();
