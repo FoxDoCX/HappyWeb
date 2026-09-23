@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ирина · Приглашение на день рождения</title>
+  <meta name="description" content="Приглашение на день рождения Ирины в художественной галерее MEYN — 4 октября в 17:00" />
+  <meta name="theme-color" content="#1a2420" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%231a2420'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' fill='%23c4a35a' font-family='Georgia,serif'%3EИ%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <nav class="nav" id="nav">
+    <a class="nav__brand" href="#top">Ирина</a>
+    <div class="nav__links">
+      <a href="#evening">Вечер</a>
+      <a href="#details">Детали</a>
+      <a href="#gifts">Подарки</a>
+      <a class="nav__cta" href="#rsvp">RSVP</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero__media" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=2400&q=80"
+        alt=""
+        width="2400"
+        height="1600"
+      />
+      <div class="hero__veil"></div>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__meta">Художественная галерея MEYN · 4 октября</p>
+      <p class="hero__brand">Ирина</p>
+      <h1 class="hero__title">Приглашаю отпраздновать день рождения</h1>
+      <p class="hero__lead">Вечер эстетики, искусства и живого общения — без шума и стандартных тостов.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#rsvp">Подтвердить присутствие</a>
+        <a class="btn btn--ghost" href="#evening">Программа вечера</a>
+      </div>
+    </div>
+
+    <a class="hero__scroll" href="#invite" aria-label="Читать приглашение">
+      <span></span>
+    </a>
+  </header>
+
+  <main>
+    <section id="invite" class="section invite">
+      <div class="invite__sheet reveal">
+        <div class="invite__ornament" aria-hidden="true">
+          <span></span><span></span>
+        </div>
+        <p class="invite__greeting">Привет, дорогой друг!</p>
+        <p class="invite__body">
+          Приглашаю тебя отпраздновать мой день рождения в самом необычном месте —
+          в художественной галерее <em>MEYN</em>. Никаких шумных ресторанов и стандартных тостов:
+          нас ждёт вечер, наполненный эстетикой, искусством и живым общением.
+        </p>
+        <p class="invite__sign">Ваша Ирина</p>
+        <div class="invite__ornament invite__ornament--bottom" aria-hidden="true">
+          <span></span><span></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="evening" class="section evening">
+      <div class="section__inner">
+        <p class="eyebrow">Что нас ждёт</p>
+        <h2 class="section__title">Три грани вечера</h2>
+
+        <ul class="program">
+          <li class="program__item reveal">
+            <span class="program__num">01</span>
+            <div>
+              <span class="program__label">Атмосфера</span>
+              <p>Мы будем окружены картинами и предметами искусства.</p>
+            </div>
+          </li>
+          <li class="program__item reveal">
+            <span class="program__num">02</span>
+            <div>
+              <span class="program__label">Для души и тела</span>
+              <p>Презентация моего авторского курса по позированию и уверенности в себе — обещаю, это будет полезно каждому.</p>
+            </div>
+          </li>
+          <li class="program__item reveal">
+            <span class="program__num">03</span>
+            <div>
+              <span class="program__label">Фуршет</span>
+              <p>Лёгкие закуски, напитки и много времени для свободного общения без суеты.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="details" class="section details">
+      <div class="details__veil" aria-hidden="true"></div>
+      <div class="section__inner details__content">
+        <p class="eyebrow">Когда и где</p>
+        <h2 class="section__title">4 октября · 17:00</h2>
+        <p class="details__place">
+          Галерея MEYN<br />
+          2-й Казачий переулок, 4, стр. 1
+        </p>
+
+        <div class="countdown" id="countdown" aria-label="До события">
+          <div class="countdown__cell">
+            <span class="countdown__value" data-unit="days">—</span>
+            <span class="countdown__label">дней</span>
+          </div>
+          <div class="countdown__cell">
+            <span class="countdown__value" data-unit="hours">—</span>
+            <span class="countdown__label">часов</span>
+          </div>
+          <div class="countdown__cell">
+            <span class="countdown__value" data-unit="mins">—</span>
+            <span class="countdown__label">минут</span>
+          </div>
+        </div>
+
+        <a
+          class="map-link"
+          href="https://yandex.ru/maps/?text=Москва%2C%202-%D0%B9%20%D0%9A%D0%B0%D0%B7%D0%B0%D1%87%D0%B8%D0%B9%20%D0%BF%D0%B5%D1%80%D0%B5%D1%83%D0%BB%D0%BE%D0%BA%2C%204%2C%20%D1%81%D1%82%D1%80.%201"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Открыть на карте →
+        </a>
+      </div>
+    </section>
+
+    <section id="gifts" class="section gifts">
+      <div class="section__inner">
+        <p class="eyebrow">Подарки</p>
+        <h2 class="section__title">Почему я вас так люблю</h2>
+        <p class="section__text">
+          Вы все — люди вежливые и щедрые, и я знаю, что многие захотят принести цветы или коробку.
+          Но в галерею неудобно заходить с огромными пакетами, а я, как фотограф и путешественник в душе,
+          очень ценю возможность выбрать то, что нужно именно сейчас.
+        </p>
+        <p class="section__text">
+          Поэтому подготовила удобный вариант: виртуальные открытки с возможностью перевода.
+          Выберите сумму, которая комфортна именно вам, и прикрепите к переводу пару тёплых слов —
+          это будет лучший комплимент.
+        </p>
+
+        <div class="amounts" role="list">
+          <button type="button" class="amount reveal" role="listitem" data-amount="3000">
+            <span class="amount__ornament" aria-hidden="true"></span>
+            <span class="amount__sum">3 000 ₽</span>
+            <span class="amount__note">на новые впечатления</span>
+          </button>
+          <button type="button" class="amount reveal" role="listitem" data-amount="5000">
+            <span class="amount__ornament" aria-hidden="true"></span>
+            <span class="amount__sum">5 000 ₽</span>
+            <span class="amount__note">на творческие планы</span>
+          </button>
+          <button type="button" class="amount reveal" role="listitem" data-amount="10000">
+            <span class="amount__ornament" aria-hidden="true"></span>
+            <span class="amount__sum">10 000 ₽</span>
+            <span class="amount__note">на грандиозные проекты</span>
+          </button>
+        </div>
+
+        <a class="btn btn--primary" id="gift-link" href="#" target="_blank" rel="noopener noreferrer">
+          Сказать «С днём рождения»
+        </a>
+        <p class="gifts__aside">
+          Если удобнее наличными — тоже вариант. Только, пожалуйста, без огромных коробок.
+        </p>
+      </div>
+    </section>
+
+    <section id="rsvp" class="section rsvp">
+      <div class="section__inner section__inner--narrow">
+        <div class="rsvp__frame reveal">
+          <p class="eyebrow">Регистрация</p>
+          <h2 class="section__title">Подтвердите присутствие</h2>
+          <p class="section__text">
+            Чтобы понимать, сколько бокалов ставить и сколько мест бронировать,
+            пожалуйста, ответьте до <strong>1 октября 2026</strong>. Это займёт 30 секунд.
+          </p>
+
+          <a class="btn btn--primary" id="rsvp-external" href="#" hidden>Перейти к регистрации</a>
+
+          <form class="rsvp-form" id="rsvp-form" novalidate>
+            <label class="field">
+              <span>Имя</span>
+              <input type="text" name="name" required autocomplete="name" placeholder="Как вас зовут" />
+            </label>
+
+            <fieldset class="choice">
+              <legend>Ответ</legend>
+              <label class="choice__option">
+                <input type="radio" name="answer" value="yes" checked />
+                <span>Обязательно приду</span>
+              </label>
+              <label class="choice__option">
+                <input type="radio" name="answer" value="maybe" />
+                <span>Пока не уверена</span>
+              </label>
+              <label class="choice__option">
+                <input type="radio" name="answer" value="no" />
+                <span>К сожалению, не смогу</span>
+              </label>
+            </fieldset>
+
+            <label class="field">
+              <span>Комментарий</span>
+              <textarea name="note" rows="3" placeholder="Пожелания, с кем придёте…"></textarea>
+            </label>
+
+            <button class="btn btn--primary" type="submit">Отправить ответ</button>
+            <p class="form-status" id="form-status" role="status" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <div class="section__inner section__inner--narrow">
+        <div class="closing__rule" aria-hidden="true"></div>
+        <p class="closing__quote reveal">
+          Жду вас с нетерпением.<br />Давайте проведём этот вечер красиво.
+        </p>
+        <p class="closing__sign">Ваша Ирина</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>4 октября 2026 · Галерея MEYN</p>
+  </footer>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
